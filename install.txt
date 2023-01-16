@@ -1,0 +1,9 @@
+pip install databases[postgresql]
+pip install motor
+
+pip install graphene
+pip install graphene-sqlalchemy
+
+pip install PyJWT
+
+pip install pymongo

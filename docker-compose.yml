@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+      - MONGO_DB=test
+      - POSTGRES_URL=postgresql://postgres:password@postgres:5432/test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=test
+    volumes:
+      - .:/app
+    depends_on:
+      - mongo
+      - postgres
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=test
+    ports:
+      - 5432:5432
